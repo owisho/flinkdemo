@@ -1,4 +1,4 @@
-package per.owisho.learn;
+package per.owisho.learn.socket;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.functions.KeySelector;
