@@ -13,9 +13,7 @@ public class TypeHintTest {
                 return getClass()+"";
             }
         };
-
         System.out.println(integerTypeHint.toString());
-
     }
 
 }
