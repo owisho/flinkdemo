@@ -9,7 +9,6 @@ import org.apache.flink.connector.datagen.source.GeneratorFunction;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
 
 public class KafkaSinkDemo {
     public static void main(String[] args) {
@@ -25,8 +24,6 @@ public class KafkaSinkDemo {
         }, Long.MAX_VALUE, RateLimiterStrategy.perSecond(1), TypeInformation.of(String.class));
 
         DataStreamSource<String> genStream = env.fromSource(genSource, WatermarkStrategy.noWatermarks(), "genSource");
-
-        genStream.addSink(new FlinkKafkaProducer010<>("","test",new SimpleStringSchema())).name("kafka-sink");
 
         try {
             env.execute("kafka-sink-demo");
